@@ -1,0 +1,64 @@
+
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-12">
+
+  <h4>Login to start</h4>
+  
+<form  [formGroup]="profile" class="xy" (submit)="verify()">
+   
+        
+
+
+  
+ 
+      
+      <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Enter Email"  formControlName="email">
+    <mat-error
+    *ngIf="profile.controls['email'].errors?.pattern && profile.controls['email'].touched">
+    Enter a valid email with requested pattern
+  </mat-error>
+  <mat-error
+  *ngIf="profile.controls['email'].errors?.minLength && profile.controls['email'].touched">
+     Email should have minimum 8 characters
+ </mat-error>
+    <mat-error
+     *ngIf="profile.controls['email'].errors?.required && profile.controls['email'].touched">
+        Email is required
+    </mat-error>
+
+  </mat-form-field>
+ 
+
+ 
+   
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password"  placeholder="Enter password" formControlName="password">
+   
+      <mat-error
+        *ngIf="profile.controls['password'].errors?.required && profile.controls['password'].touched">
+      Password is required
+      </mat-error>
+      <mat-error
+      *ngIf="profile.controls['password'].errors?.minLength && profile.controls['password'].touched">
+      Enter a password with more than 8 letters
+    </mat-error>
+    <mat-error
+    *ngIf="profile.controls['password'].errors?.pattern && profile.controls['password'].touched">
+    Enter a password with valid pattern
+  </mat-error>
+      
+   </mat-form-field>
+   
+ 
+  <button class="btn btn-primary"  [disabled]="!profile.valid">Submit</button>
+  </form>
+  </div>
+  </div>
+  
+
+</div>

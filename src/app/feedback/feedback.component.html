@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+
+<form  [formGroup]="feebbackForm"  (submit)="omSubmit()">
+
+  <div class="form-group">
+      <label for="formGroupExampleInput"> Name : </label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name" formControlName="name">
+      <mat-error 
+      *ngIf="feebbackForm.controls['name'].errors?.required && feebbackForm.controls['name'].touched">
+      Name is required
+  </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput2"> Email :</label>
+      <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Enter email" formControlName="email">
+      <mat-error
+      *ngIf="feebbackForm.controls['email'].errors?.pattern && feebbackForm.controls['email'].touched">
+      Enter a valid email with valid pattern,
+    </mat-error>
+    <mat-error
+    *ngIf="feebbackForm.controls['email'].errors?.minlength && feebbackForm.controls['email'].touched">
+       Email should have minimum 8 characters
+   </mat-error>
+      <mat-error
+       *ngIf="feebbackForm.controls['email'].errors?.required && feebbackForm.controls['email'].touched">
+          Email is required
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput2"> Mobile Number :</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter mobile number" formControlName="mobile">
+        <mat-error
+        *ngIf="feebbackForm.controls['mobile'].errors?.required && feebbackForm.controls['mobile'].touched">
+           Mobile number is required
+       </mat-error>
+
+       <mat-error
+       *ngIf="feebbackForm.controls['mobile'].errors?.pattern && feebbackForm.controls['mobile'].touched">
+       Enter a valid mobile number ,
+     </mat-error>
+
+       <mat-error
+       *ngIf="feebbackForm.controls['mobile'].errors?.maxlength && feebbackForm.controls['mobile'].touched">
+       Mobile Number should have maximum 10 characters
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput2"> Description :</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter description" formControlName="description">
+        <mat-error 
+        *ngIf="feebbackForm.controls['description'].errors?.required && feebbackForm.controls['description'].touched">
+        Description  is required
+    </mat-error>
+    <mat-error
+    *ngIf="feebbackForm.controls['description'].errors?.maxlength && feebbackForm.controls['description'].touched">
+    Description should have maximum 250 characters
+   </mat-error>
+    </div>
+
+    <button class="btn btn-primary"  [disabled]="!feebbackForm.valid">Submit</button>
+
+
+  </form>
